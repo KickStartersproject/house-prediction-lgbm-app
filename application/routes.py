@@ -14,6 +14,9 @@ def prediction():
 
 @routes.route('/predict', methods=['GET', 'POST'])
 def predict():
+
+    print('request got in here...')
+
     LotShape = request.form.get('LotShape')
     LotConfig = request.form.get('LotConfig')
     Neighborhood = request.form.get('Neighborhood')
@@ -49,8 +52,10 @@ def predict():
                             'FullBath': FullBath, 'KitchenQual': KitchenQual, 'TotRmsAbvGrd': TotRmsAbvGrd, 'Fireplaces': Fireplaces,
                             'GarageYrBlt': GarageYrBlt, 'GarageFinish': GarageFinish, 'GarageCars': GarageCars, 'GarageArea': GarageArea})
 
+    print(inputData)
     # URL for prediction model
-    url = "http://127.0.0.0:5000"
+    url = "http://127.0.0.0:5000/api"
+    # url for heroku
 
     #post data to url
     results =  requests.post(url, inputData)
@@ -58,7 +63,8 @@ def predict():
     return render_template("prediction.html", LotFrontage = LotFrontage, LotArea = LotArea, LotShape = LotShape, LotConfig = LotConfig,
                             Neighborhood = Neighborhood, HouseStyle = HouseStyle, OverallQual = OverallQual, YearBuilt = YearBuilt, YearRemodAdd = YearRemodAdd,
                             MasVnrArea = MasVnrArea, ExterQual = ExterQual, BsmtQual = BsmtQual, BsmtFinSF1 = BsmtFinSF1, TotalBsmtSF = TotalBsmtSF,
-                            HeatingQC = HeatingQC, CentralAir = CentralAir, firstFlrSF = FirstFlrSF, SecondFlrSF = SecondFlrSF, GrLivArea = GrLivArea,
+                            HeatingQC = HeatingQC, CentralAir = CentralAir, FirstFlrSF = FirstFlrSF, SecondFlrSF = SecondFlrSF, GrLivArea = GrLivArea,
                             FullBath = FullBath, KitchenQual = KitchenQual, TotRmsAbvGrd = TotRmsAbvGrd, Fireplaces = Fireplaces,
                             GarageYrBlt = GarageYrBlt, GarageFinish = GarageFinish, GarageCars = GarageCars, GarageArea = GarageArea,
-                            results=results.content.decode('UTF-8'))
+                            results = results.content.decode('UTF-8'))
+

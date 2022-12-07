@@ -1,12 +1,18 @@
 {% extends "index.html" %} {% block title %} Prediction {% endblock %}
 
 {% block content %}
-<h2>
-    Prediction
-</h2>
-<form method="POST" name="predict">
+
+<form method="POST" name="predictform" id="predictform" action="{{ url_for('routes.predict')}}" method="POST">
+    
+    <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="end end">
+        <div class="col-md-8 p-0">
+            <span style="font-size: 36px;"><b>Prediction</b></span>
+        <button type="submit" class="mt-2 float-right btn btn-primary">Predict</button>
+        </div>
+
+      </div>
     <div class="row">
-        <div class="col-md-8 border-right">
+        <div class="mt-2 col-md-8 border-right">
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
@@ -260,33 +266,33 @@
                 <div class="col-md-12">
                     <h3> Predicted House Price: {{ results }}  </h3>
                         <p class="mb-1"><b>For the following features:</b> </p>
-                        <p class="mb-1"> Lot Frontage (sqft): {{buying}} </p>
-                        <p class="mb-1"> Lot Area (sqft): {{maint}} </p>
-                        <p class="mb-1"> Overall Quality: {{doors}}</p>
-                        <p class="mb-1"> Year Built: {{persons}} </p>
-                        <p class="mb-1"> Remodel Year: {{safety}} </p>
-                        <p class="mb-1"> Masonry Veneer (sqft): sedan </p>
-                        <p class="mb-1"> Basement Finish (sqft): sedan </p>
-                        <p class="mb-1"> Basement Area (sqft): sedan </p>
-                        <p class="mb-1"> First Floor (sqft): sedan </p>
-                        <p class="mb-1"> Second Floor (sqft): sedan </p>
-                        <p class="mb-1"> Ground Living (sqft): sedan </p>
-                        <p class="mb-1"> Full Bathrooms: sedan </p>
-                        <p class="mb-1"> Total Rooms: sedan </p>
-                        <p class="mb-1"> Fire Places: sedan </p>
-                        <p class="mb-1"> Garage Year Built: sedan </p>
-                        <p class="mb-1"> Garage Car Capacity: sedan </p>
-                        <p class="mb-1"> Garage Area (sqft): sedan </p>
-                        <p class="mb-1"> Lot Shape: sedan </p>
-                        <p class="mb-1"> Lot Configuration: sedan </p>
-                        <p class="mb-1"> Neighborhood: sedan </p>
-                        <p class="mb-1"> House Style: sedan </p>
-                        <p class="mb-1"> Exterior Quality: sedan </p>
-                        <p class="mb-1"> Basement Height: sedan </p>
-                        <p class="mb-1"> Heating Condition: sedan </p>
-                        <p class="mb-1"> Central AC: sedan </p>
-                        <p class="mb-1"> Kitchen Quality: sedan </p>
-                        <p class="mb-1"> Garage Finish: sedan </p>
+                        <p class="mb-1"> Lot Frontage (sqft): <span><b>{{LotFrontage}}</b></span> </p>
+                        <p class="mb-1"> Lot Area (sqft): <span><b>{{LotArea}}</b></span> </p>
+                        <p class="mb-1"> Overall Quality: <span><b>{{OverallQual}}</b></span></p>
+                        <p class="mb-1"> Year Built: <span><b>{{YearBuilt}}</b></span> </p>
+                        <p class="mb-1"> Remodel Year: <span><b>{{YearRemodAdd}}</b></span> </p>
+                        <p class="mb-1"> Masonry Veneer (sqft): <span><b>{{MasVnrArea}}</b></span> </p>
+                        <p class="mb-1"> Basement Finish (sqft): <span><b>{{BsmtFinSF1}}</b></span> </p>
+                        <p class="mb-1"> Basement Area (sqft): <span><b>{{TotalBsmtSF}}</b></span> </p>
+                        <p class="mb-1"> First Floor (sqft): <span><b>{{FirstFlrSF}}</b></span> </p>
+                        <p class="mb-1"> Second Floor (sqft): <span><b>{{SecondFlrSF}}</b></span> </p>
+                        <p class="mb-1"> Ground Living (sqft): <span><b>{{GrLivArea}}</b></span> </p>
+                        <p class="mb-1"> Full Bathrooms: <span><b>{{FullBath}}</b></span> </p>
+                        <p class="mb-1"> Total Rooms: <span><b>{{TotRmsAbvGrd}}</b></span> </p>
+                        <p class="mb-1"> Fire Places: <span><b>{{Fireplaces}}</b></span> </p>
+                        <p class="mb-1"> Garage Year Built: <span><b>{{GarageYrBlt}}</b></span> </p>
+                        <p class="mb-1"> Garage Car Capacity: <span><b>{{GarageCars}}</b></span> </p>
+                        <p class="mb-1"> Garage Area (sqft): <span><b>{{GarageArea}}</b></span> </p>
+                        <p class="mb-1"> Lot Shape: <span><b>{{LotShape}}</b></span> </p>
+                        <p class="mb-1"> Lot Configuration: <span><b>{{LotConfig}}</b></span> </p>
+                        <p class="mb-1"> Neighborhood: <span><b>{{Neighborhood}}</b></span> </p>
+                        <p class="mb-1"> House Style: <span><b>{{HouseStyle}}</b></span> </p>
+                        <p class="mb-1"> Exterior Quality: <span><b>{{ExterQual}}</b></span> </p>
+                        <p class="mb-1"> Basement Height: <span><b>{{BsmtQual}}</b></span> </p>
+                        <p class="mb-1"> Heating Condition: <span><b>{{HeatingQC}}</b></span> </p>
+                        <p class="mb-1"> Central AC: <span><b>{{CentralAir}}</b></span> </p>
+                        <p class="mb-1"> Kitchen Quality: <span><b>{{KitchenQual}}</b></span> </p>
+                        <p class="mb-1"> Garage Finish: <span><b>{{GarageFinish}}</b></span> </p>
                 </div>
             </div>
             
