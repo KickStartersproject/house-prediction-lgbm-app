@@ -17,16 +17,16 @@ def predict():
 
     print('request got in here...')
 
-    LotShape = request.form.get('LotShape')
-    LotConfig = request.form.get('LotConfig')
+    # LotShape = request.form.get('LotShape')
+    # LotConfig = request.form.get('LotConfig')
     Neighborhood = request.form.get('Neighborhood')
     HouseStyle = request.form.get('HouseStyle')
     ExterQual = request.form.get('ExterQual')
-    BsmtQual = request.form.get('BsmtQual')
-    HeatingQC = request.form.get('HeatingQC')
-    CentralAir = request.form.get('CentralAir')
-    KitchenQual = request.form.get('KitchenQual')
-    GarageFinish = request.form.get('GarageFinish')
+    # BsmtQual = request.form.get('BsmtQual')
+    # HeatingQC = request.form.get('HeatingQC')
+    # CentralAir = request.form.get('CentralAir')
+    # KitchenQual = request.form.get('KitchenQual')
+    # GarageFinish = request.form.get('GarageFinish')
     MasVnrArea = request.form.get('MasVnrArea')
     MasVnrAreaCatg = request.form.get('MasVnrAreaCatg')
     LotFrontage = request.form.get('LotFrontage')
@@ -39,19 +39,17 @@ def predict():
     FirstFlrSF = request.form.get('1stFlrSF')
     SecondFlrSF = request.form.get('2ndFlrSF')
     GrLivArea = request.form.get('GrLivArea')
-    FullBath = request.form.get('FullBath')
+    # FullBath = request.form.get('FullBath')
     TotRmsAbvGrd = request.form.get('TotRmsAbvGrd')
     Fireplaces = request.form.get('Fireplaces')
     GarageYrBlt = request.form.get('GarageYrBlt')
     GarageCars = request.form.get('GarageCars')
     GarageArea = request.form.get('GarageArea')
 
-    inputData = json.dumps({'LotFrontage': LotFrontage, 'LotArea': LotArea, 'LotShape': LotShape, 'LotConfig': LotConfig,
-                            'Neighborhood': Neighborhood, 'HouseStyle': HouseStyle, 'OverallQual': OverallQual, 'YearBuilt': YearBuilt, 'YearRemodAdd': YearRemodAdd,
-                            'MasVnrArea': MasVnrArea, 'MasVnrAreaCatg': MasVnrAreaCatg, 'ExterQual': ExterQual, 'BsmtQual': BsmtQual, 'BsmtFinSF1': BsmtFinSF1, 'TotalBsmtSF': TotalBsmtSF,
-                            'HeatingQC': HeatingQC, 'CentralAir': CentralAir, '1stFlrSF': FirstFlrSF, '2ndFlrSF': SecondFlrSF, 'GrLivArea': GrLivArea,
-                            'FullBath': FullBath, 'KitchenQual': KitchenQual, 'TotRmsAbvGrd': TotRmsAbvGrd, 'Fireplaces': Fireplaces,
-                            'GarageYrBlt': GarageYrBlt, 'GarageFinish': GarageFinish, 'GarageCars': GarageCars, 'GarageArea': GarageArea})
+    inputData = json.dumps({'LotFrontage': LotFrontage, 'LotArea': LotArea, 'Neighborhood': Neighborhood, 'HouseStyle': HouseStyle, 'OverallQual': OverallQual, 
+                            'YearBuilt': YearBuilt, 'YearRemodAdd': YearRemodAdd, 'MasVnrArea': MasVnrArea, 'MasVnrAreaCatg': MasVnrAreaCatg, 'ExterQual': ExterQual,
+                            'BsmtFinSF1': BsmtFinSF1, 'TotalBsmtSF': TotalBsmtSF, '1stFlrSF': FirstFlrSF, '2ndFlrSF': SecondFlrSF, 'GrLivArea': GrLivArea,
+                            'TotRmsAbvGrd': TotRmsAbvGrd, 'Fireplaces': Fireplaces, 'GarageYrBlt': GarageYrBlt, 'GarageCars': GarageCars, 'GarageArea': GarageArea})
 
     print(inputData)
     # URL for prediction model
@@ -63,14 +61,14 @@ def predict():
 
     # returned data
     result = results.content.decode('UTF-8')
+    print('Predicted price: {}'.format(result))
     final_result = float(result)
 
-    return render_template("prediction.html", LotFrontage = LotFrontage, LotArea = LotArea, LotShape = LotShape, LotConfig = LotConfig,
-                            Neighborhood = Neighborhood, HouseStyle = validate_transform_data(HouseStyle), OverallQual = OverallQual, YearBuilt = YearBuilt, YearRemodAdd = YearRemodAdd,
-                            MasVnrArea = MasVnrArea, MasVnrAreaCatg = validate_transform_data(MasVnrAreaCatg), ExterQual = validate_transform_data(ExterQual), BsmtQual = validate_transform_data(BsmtQual),
-                            BsmtFinSF1 = BsmtFinSF1, TotalBsmtSF = TotalBsmtSF, HeatingQC = validate_transform_data(HeatingQC), CentralAir = validate_transform_data(CentralAir),
-                            FirstFlrSF = FirstFlrSF, SecondFlrSF = SecondFlrSF, GrLivArea = GrLivArea, FullBath = FullBath, KitchenQual = validate_transform_data(KitchenQual),
-                            TotRmsAbvGrd = TotRmsAbvGrd, Fireplaces = Fireplaces, GarageYrBlt = GarageYrBlt, GarageFinish = validate_transform_data(GarageFinish), 
+    return render_template("prediction.html", LotFrontage = LotFrontage, LotArea = LotArea, Neighborhood = Neighborhood,
+                            HouseStyle = validate_transform_data(HouseStyle), OverallQual = OverallQual, YearBuilt = YearBuilt, YearRemodAdd = YearRemodAdd,
+                            MasVnrArea = MasVnrArea, MasVnrAreaCatg = validate_transform_data(MasVnrAreaCatg), ExterQual = validate_transform_data(ExterQual),
+                            BsmtFinSF1 = BsmtFinSF1, TotalBsmtSF = TotalBsmtSF, FirstFlrSF = FirstFlrSF, SecondFlrSF = SecondFlrSF, GrLivArea = GrLivArea,
+                            TotRmsAbvGrd = TotRmsAbvGrd, Fireplaces = Fireplaces, GarageYrBlt = GarageYrBlt, 
                             GarageCars = GarageCars, GarageArea = GarageArea, results = '$' + ' ' + convert_to_dollars(final_result))
 
 
