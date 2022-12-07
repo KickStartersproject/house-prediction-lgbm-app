@@ -106,7 +106,7 @@ The dataset contains the following features:
 git clone https://github.com/KickStartersproject/house-prediction-lgbm-app.git
 
 # change to the repo directory
-cd house-prediction-lgbm-ap
+cd house-prediction-lgbm-app
 
 # create a virtualenv
 py -m venv venv
